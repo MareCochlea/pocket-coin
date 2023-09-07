@@ -6,4 +6,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		print("pressed.")
+	elif Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) == false:
+		print("not.")

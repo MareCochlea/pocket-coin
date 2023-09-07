@@ -1,9 +1,9 @@
+Button
 CollisionShape3D
+StaticBody3D
 CollisionPolygon3D
 RigidBody3D
 MeshInstance3D
-StaticBody3D
-Button
 WorldEnvironment
 GPUParticlesCollisionHeightField3D
 DirectionalLight3D

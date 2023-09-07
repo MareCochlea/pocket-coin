@@ -1,10 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://si7trehpl43g"]
+[gd_scene load_steps=8 format=3 uid="uid://si7trehpl43g"]
 
-[ext_resource type="PackedScene" uid="uid://ca2g1fab35gsr" path="res://scenes/a.tscn" id="2_tie68"]
+[ext_resource type="Script" path="res://scripts/coin.gd" id="1_aadkq"]
+[ext_resource type="Script" path="res://scripts/pyshics.gd" id="2_a4687"]
 [ext_resource type="Environment" uid="uid://b0lp0dseep050" path="res://shaders/environment.tres" id="2_v3dmk"]
+[ext_resource type="PackedScene" uid="uid://c8qi8n3fuqayb" path="res://models/coin.gltf" id="3_cc5wa"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_nmusr"]
 size = Vector2(3, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_13qff"]
+size = Vector3(3, 0, 3)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xdcy8"]
+margin = 0.0
+height = 0.12
+radius = 0.4
 
 [node name="main" type="Node3D"]
 
@@ -12,8 +22,8 @@ size = Vector2(3, 3)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -30.0
-offset_right = 34.0
+offset_left = -32.0
+offset_right = 32.0
 offset_bottom = 32.0
 grow_horizontal = 2
 text = "SILVER"
@@ -42,4 +52,24 @@ environment = ExtResource("2_v3dmk")
 [node name="base" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_nmusr")
 
-[node name="RigidBody3D" parent="." instance=ExtResource("2_tie68")]
+[node name="StaticBody3D" type="StaticBody3D" parent="base"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="base/StaticBody3D"]
+shape = SubResource("BoxShape3D_13qff")
+
+[node name="coin" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.749708, 0)
+script = ExtResource("2_a4687")
+
+[node name="coin" parent="coin" instance=ExtResource("3_cc5wa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00224274, 0, 0)
+skeleton = NodePath("../..")
+script = ExtResource("1_aadkq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="coin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06, 0)
+shape = SubResource("CylinderShape3D_xdcy8")
+
+[connection signal="pressed" from="Button" to="coin/coin" method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="coin/coin" method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="coin/coin" method="_on_button_3_pressed"]
