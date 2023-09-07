@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://si7trehpl43g"]
+
+[ext_resource type="PackedScene" uid="uid://c8qi8n3fuqayb" path="res://models/coin.gltf" id="1_msvux"]
+[ext_resource type="Script" path="res://scripts/coin.gd" id="2_2vtkq"]
+[ext_resource type="Environment" uid="uid://b0lp0dseep050" path="res://shaders/environment.tres" id="2_v3dmk"]
+
+[node name="main" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, -2.99003e-08, 8.21505e-08, 0, 0.939693, 0.34202, -8.74228e-08, 0.34202, -0.939693, 0, 1, -1.5)
+current = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_v3dmk")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 132.0
+offset_top = 70.0
+offset_right = 233.0
+offset_bottom = 118.0
+text = "CHANGE"
+
+[node name="coin" parent="." instance=ExtResource("1_msvux")]
+script = ExtResource("2_2vtkq")
+aaa = null

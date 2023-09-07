@@ -1,0 +1,4 @@
+res://scenes/coin.tscn
+res://scripts/coin.gd
+res://shaders/coin.tres
+res://scenes/main.tscn

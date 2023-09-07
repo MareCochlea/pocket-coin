@@ -1,3 +1,16 @@
 CollisionShape3D
+CollisionPolygon3D
 RigidBody3D
+MeshInstance3D
+StaticBody3D
+Button
+WorldEnvironment
+GPUParticlesCollisionHeightField3D
+DirectionalLight3D
+SpotLight3D
+LightmapGI
+OmniLight3D
+LightmapProbe
+Camera3D
+ShaderGlobalsOverride
 CharacterBody3D

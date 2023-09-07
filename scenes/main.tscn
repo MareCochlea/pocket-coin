@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://si7trehpl43g"]
+
+[ext_resource type="PackedScene" uid="uid://ca2g1fab35gsr" path="res://scenes/a.tscn" id="2_tie68"]
+[ext_resource type="Environment" uid="uid://b0lp0dseep050" path="res://shaders/environment.tres" id="2_v3dmk"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nmusr"]
+size = Vector2(3, 3)
+
+[node name="main" type="Node3D"]
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_right = 34.0
+offset_bottom = 32.0
+grow_horizontal = 2
+text = "SILVER"
+
+[node name="Button2" type="Button" parent="."]
+offset_right = 64.0
+offset_bottom = 32.0
+text = "GOLD"
+
+[node name="Button3" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -70.0
+offset_bottom = 32.0
+grow_horizontal = 0
+text = "COPPER"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, -2.99003e-08, 8.21505e-08, 0, 0.939693, 0.34202, -8.74228e-08, 0.34202, -0.939693, 0, 1, -1.5)
+current = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_v3dmk")
+
+[node name="base" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_nmusr")
+
+[node name="RigidBody3D" parent="." instance=ExtResource("2_tie68")]

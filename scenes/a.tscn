@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://ca2g1fab35gsr"]
+
+[ext_resource type="Script" path="res://scripts/pyshics.gd" id="1_wbwgw"]
+[ext_resource type="PackedScene" uid="uid://c8qi8n3fuqayb" path="res://models/coin.gltf" id="2_we6wp"]
+[ext_resource type="Script" path="res://scripts/coin.gd" id="3_5gvto"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xdcy8"]
+margin = 0.0
+height = 0.12
+radius = 0.4
+
+[node name="RigidBody3D" type="RigidBody3D"]
+script = ExtResource("1_wbwgw")
+
+[node name="coin" parent="." instance=ExtResource("2_we6wp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00224274, 0, 0)
+skeleton = NodePath("../..")
+script = ExtResource("3_5gvto")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06, 0)
+shape = SubResource("CylinderShape3D_xdcy8")
