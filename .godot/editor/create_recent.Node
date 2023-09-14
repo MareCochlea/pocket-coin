@@ -1,11 +1,14 @@
+DirectionalLight3D
 CollisionShape3D
+Area3D
+Area2D
+Timer
+StaticBody3D
 CollisionPolygon3D
 Node
 SpotLight3D
-DirectionalLight3D
 AnimationPlayer
 Button
-StaticBody3D
 RigidBody3D
 MeshInstance3D
 WorldEnvironment
