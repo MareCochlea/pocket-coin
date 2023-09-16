@@ -133,6 +133,7 @@ fov = 50.0
 [node name="coin" type="RigidBody3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+input_capture_on_drag = true
 axis_lock_linear_x = true
 mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_amnei")

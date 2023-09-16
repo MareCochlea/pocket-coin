@@ -9,7 +9,7 @@ func _ready():
 	print("%02d:%02d:%02d" % [time.hour, time.minute, time.second])
 
 func _on_debug_timeout():
-	while sleeping == true:
+	if sleeping == true:
 		print("sleeping")
 
 
@@ -32,4 +32,4 @@ func _on_flip_pressed():
 
 func _on_area_3d_body_entered(body):
 	if body_entered:
-		pass
+		sleeping = true
