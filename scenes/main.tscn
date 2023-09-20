@@ -138,6 +138,8 @@ axis_lock_linear_x = true
 mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_amnei")
 gravity_scale = 2.5
+max_contacts_reported = 20
+contact_monitor = true
 sleeping = true
 constant_force = Vector3(0, 5, 0)
 constant_torque = Vector3(0, 5, 0)
@@ -199,6 +201,7 @@ wait_time = 0.5
 
 [node name="timer" type="Timer" parent="."]
 unique_name_in_owner = true
+wait_time = 2.0
 
 [node name="debug" type="Timer" parent="."]
 unique_name_in_owner = true

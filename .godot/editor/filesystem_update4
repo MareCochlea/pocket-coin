@@ -2,3 +2,4 @@ res://scenes/main.tscn
 res://scripts/coin.gd
 res://shaders/coin.tres
 res://scripts/functions.gd
+res://default_bus_layout.tres

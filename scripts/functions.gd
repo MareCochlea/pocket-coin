@@ -9,6 +9,7 @@ func _ready():
 	print("%02d:%02d:%02d" % [time.hour, time.minute, time.second])
 
 func _on_debug_timeout():
+	print(get_contact_count())
 	if sleeping == true:
 		print("sleeping")
 
@@ -20,8 +21,6 @@ func _on_mass_timeout():
 	print("done")
 	%mass.stop()
 
-func _on_timer_timeout():
-	pass
 
 func _on_flip_pressed():
 	set_constant_torque(Vector3(0, 10, 0))
@@ -30,6 +29,9 @@ func _on_flip_pressed():
 	%mass.start()
 	print("started")
 
-func _on_area_3d_body_entered(body):
+func _on_area_3d_body_entered(_body):
 	if body_entered:
-		sleeping = true
+		%timer.start()
+
+func _on_timer_timeout():
+	pass
