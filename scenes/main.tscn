@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://si7trehpl43g"]
+[gd_scene load_steps=16 format=3 uid="uid://si7trehpl43g"]
 
 [ext_resource type="Script" path="res://scripts/coin.gd" id="1_aadkq"]
 [ext_resource type="Script" path="res://scripts/functions.gd" id="1_m6er7"]
+[ext_resource type="Script" path="res://scripts/time.gd" id="1_v1mg0"]
 [ext_resource type="Environment" uid="uid://b0lp0dseep050" path="res://shaders/environment.tres" id="2_v3dmk"]
 [ext_resource type="PackedScene" uid="uid://c8qi8n3fuqayb" path="res://models/coin.gltf" id="3_cc5wa"]
 
@@ -118,12 +119,12 @@ radius = 6.5
 
 [node name="main" type="Node"]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0)
-light_energy = 16.0
+[node name="cycle" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.438371, 0.898794, 0, -0.898794, 0.438371, 0, 0, 0)
+light_bake_mode = 0
 shadow_enabled = true
-shadow_blur = 0.0
 sky_mode = 1
+script = ExtResource("1_v1mg0")
 
 [node name="camera" type="Camera3D" parent="."]
 transform = Transform3D(-1, -5.16436e-08, 1.4189e-07, 0, 0.939693, 0.34202, -1.50996e-07, 0.34202, -0.939693, 0, 3, -4)
@@ -207,6 +208,9 @@ wait_time = 2.0
 unique_name_in_owner = true
 wait_time = 0.5
 
+[node name="countdown" type="Timer" parent="."]
+unique_name_in_owner = true
+
 [node name="Button2" type="Button" parent="."]
 offset_right = 64.0
 offset_bottom = 32.0
@@ -231,5 +235,6 @@ text = "FLIP COIN"
 [connection signal="timeout" from="mass" to="coin" method="_on_mass_timeout"]
 [connection signal="timeout" from="timer" to="coin" method="_on_timer_timeout"]
 [connection signal="timeout" from="debug" to="coin" method="_on_debug_timeout"]
+[connection signal="timeout" from="countdown" to="cycle" method="_on_countdown_timeout"]
 [connection signal="pressed" from="Button2" to="coin/model" method="_on_button_2_pressed"]
 [connection signal="pressed" from="flip" to="coin" method="_on_flip_pressed"]

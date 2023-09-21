@@ -1,8 +1,8 @@
+Timer
 DirectionalLight3D
 CollisionShape3D
 Area3D
 Area2D
-Timer
 StaticBody3D
 CollisionPolygon3D
 Node
