@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://si7trehpl43g"]
+[gd_scene load_steps=17 format=3 uid="uid://si7trehpl43g"]
 
 [ext_resource type="Script" path="res://scripts/coin.gd" id="1_aadkq"]
 [ext_resource type="Script" path="res://scripts/functions.gd" id="1_m6er7"]
@@ -8,7 +8,12 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_amnei"]
 friction = 0.75
+rough = true
 bounce = 0.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f6eb3"]
+radius = 0.04
+height = 0.85
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xdcy8"]
 margin = 10.0
@@ -120,7 +125,8 @@ radius = 6.5
 [node name="main" type="Node"]
 
 [node name="cycle" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.438371, 0.898794, 0, -0.898794, 0.438371, 0, 0, 0)
+transform = Transform3D(0.992332, 0, 0.123601, -0.115158, 0.363251, 0.924547, -0.0448984, -0.931691, 0.360466, 0, 0, 0)
+rotation_order = 0
 light_bake_mode = 0
 shadow_enabled = true
 sky_mode = 1
@@ -138,10 +144,9 @@ input_capture_on_drag = true
 axis_lock_linear_x = true
 mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_amnei")
-gravity_scale = 2.5
-max_contacts_reported = 20
+gravity_scale = 2.25
+max_contacts_reported = 5
 contact_monitor = true
-sleeping = true
 constant_force = Vector3(0, 5, 0)
 constant_torque = Vector3(0, 5, 0)
 script = ExtResource("1_m6er7")
@@ -151,8 +156,24 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 skeleton = NodePath("../..")
 script = ExtResource("1_aadkq")
 
+[node name="ball" type="CollisionShape3D" parent="coin"]
+transform = Transform3D(1.5, 0, 0, 0, -6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, 0, 0.095, 0)
+shape = SubResource("CapsuleShape3D_f6eb3")
+
+[node name="ball2" type="CollisionShape3D" parent="coin"]
+transform = Transform3D(-6.55671e-08, 1.5, -6.55671e-08, 0, -6.55671e-08, -1.5, -1.5, -6.55671e-08, 2.86603e-15, 0, 0.095, 0)
+shape = SubResource("CapsuleShape3D_f6eb3")
+
+[node name="ball3" type="CollisionShape3D" parent="coin"]
+transform = Transform3D(1.06066, 1.06066, -4.63629e-08, 0, -6.55671e-08, -1.5, -1.06066, 1.06066, -4.63629e-08, 0, 0.095, 0)
+shape = SubResource("CapsuleShape3D_f6eb3")
+
+[node name="ball4" type="CollisionShape3D" parent="coin"]
+transform = Transform3D(1.06066, -1.06066, 4.63629e-08, 0, -6.55671e-08, -1.5, 1.06066, 1.06066, -4.63629e-08, 0, 0.095, 0)
+shape = SubResource("CapsuleShape3D_f6eb3")
+
 [node name="collision" type="CollisionShape3D" parent="coin"]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.06, 0)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.08, 0)
 shape = SubResource("CylinderShape3D_xdcy8")
 
 [node name="animation" type="AnimationPlayer" parent="coin"]
@@ -210,6 +231,7 @@ wait_time = 0.5
 
 [node name="countdown" type="Timer" parent="."]
 unique_name_in_owner = true
+wait_time = 0.5
 
 [node name="Button2" type="Button" parent="."]
 offset_right = 64.0

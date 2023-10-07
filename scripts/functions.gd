@@ -1,12 +1,9 @@
 extends RigidBody3D
 
-var time = Time.get_time_dict_from_system()
-
 # Debug
 
 func _ready():
 	%debug.start()
-	print("%02d:%02d:%02d" % [time.hour, time.minute, time.second])
 
 func _on_debug_timeout():
 	print(get_contact_count())

@@ -1,6 +1,6 @@
+CollisionShape3D
 Timer
 DirectionalLight3D
-CollisionShape3D
 Area3D
 Area2D
 StaticBody3D
